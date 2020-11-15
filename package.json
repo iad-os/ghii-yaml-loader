@@ -23,6 +23,9 @@
     "url": "https://github.com/iad-os/ghii-yaml-loader.git"
   },
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"

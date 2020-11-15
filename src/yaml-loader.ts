@@ -1,4 +1,4 @@
-import { Loader } from 'ghii';
+import { Loader } from '@ghii/ghii';
 import yaml from 'js-yaml';
 import * as fs from 'fs';
 import { promisify } from 'util';

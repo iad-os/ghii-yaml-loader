@@ -1,6 +1,6 @@
 {
   "name": "@ghii/yaml-loader",
-  "version": "0.0.1",
+  "version": "0.0.0",
   "description": "A Funny yaml loader for ghii configuration manager ",
   "maintainers": [
     {
@@ -22,6 +22,7 @@
     "type": "git",
     "url": "https://github.com/iad-os/ghii-yaml-loader.git"
   },
+  "private": false,
   "license": "MIT",
   "engines": {
     "node": ">=10.0.0"

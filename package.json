@@ -1,6 +1,6 @@
 {
   "name": "@ghii/yaml-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Funny yaml loader for ghii configuration manager ",
   "maintainers": [
     {

@@ -11,7 +11,7 @@ export default function yamlLoader(
   {
     throwOnError,
     logger = (err, message) => console.log(message, err),
-  }: { throwOnError?: boolean; logger: (err: unknown, message: string) => void },
+  }: { throwOnError?: boolean; logger?: (err: unknown, message: string) => void },
   ...filePathToken: string[]
 ): Loader {
   const sourcePath = path.join(...filePathToken);
@@ -26,7 +26,12 @@ export default function yamlLoader(
         const yamlContent = await readFile(sourcePath, { encoding: 'utf8' });
         return yaml.safeLoad(yamlContent) as { [key: string]: unknown };
       }
-      throw new Error(`Source ${sourcePath} is not a file`);
+      const msg = `Source ${sourcePath} is not a file`;
+      logger({ msg }, msg);
+      if (throwOnError) {
+        throw new Error(msg);
+      }
+      return {};
     } catch (err) {
       const msg = `FILE DELETED OR A DIRECTORY-> ${sourcePath} 404: ${err instanceof Error ? err.message : ''}`;
       logger(err, msg);

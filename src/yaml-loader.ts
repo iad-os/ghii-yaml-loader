@@ -7,9 +7,18 @@ const stat = promisify(fs.stat);
 
 const readFile = promisify(fs.readFile);
 
-export default function yamlLoader(...filePathToken: string[]): Loader {
+export default function yamlLoader(
+  {
+    throwOnError,
+    logger = (err, message) => console.log(message, err),
+  }: { throwOnError?: boolean; logger: (err: unknown, message: string) => void },
+  ...filePathToken: string[]
+): Loader {
   const sourcePath = path.join(...filePathToken);
-  if (!fs.existsSync(sourcePath)) throw new Error(`${sourcePath} 404`);
+  if (!fs.existsSync(sourcePath)) {
+    logger({ msg: 'not exist' }, `${sourcePath} 404`);
+    if (throwOnError) throw new Error(`${sourcePath} 404`);
+  }
   return async function yamlFileLoader() {
     try {
       const fstat = await stat(sourcePath);
@@ -19,7 +28,10 @@ export default function yamlLoader(...filePathToken: string[]): Loader {
       }
       throw new Error(`Source ${sourcePath} is not a file`);
     } catch (err) {
-      throw new Error(`FILE DELETED OR A DIRECTORY-> ${sourcePath} 404`);
+      const msg = `FILE DELETED OR A DIRECTORY-> ${sourcePath} 404: ${err instanceof Error ? err.message : ''}`;
+      logger(err, msg);
+      if (throwOnError) throw new Error(msg);
+      return {};
     }
   };
 }

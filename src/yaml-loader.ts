@@ -24,7 +24,7 @@ export default function yamlLoader(
       const fstat = await stat(sourcePath);
       if (fstat.isFile()) {
         const yamlContent = await readFile(sourcePath, { encoding: 'utf8' });
-        return yaml.safeLoad(yamlContent) as { [key: string]: unknown };
+        return yaml.load(yamlContent) as { [key: string]: unknown };
       }
       const msg = `Source ${sourcePath} is not a file`;
       logger({ msg }, msg);

@@ -40,3 +40,5 @@ export default function yamlLoader(
     }
   };
 }
+
+export { yamlLoader };

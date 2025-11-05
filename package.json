@@ -31,11 +31,11 @@
     "node": ">=22.0.0"
   },
   "scripts": {
-    "lint": "eslint . --ext .ts,.tsx",
     "prebuild": "rimraf dist",
     "build": "tsc",
     "test": "vitest",
-    "test:watch": "vitest --watch"
+    "test:watch": "vitest --watch",
+    "lint": "biome check --write"
   },
   "devDependencies": {
     "@biomejs/biome": "2.3.3",

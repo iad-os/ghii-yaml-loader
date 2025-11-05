@@ -1,7 +1,7 @@
 import { existsSync } from 'node:fs';
 import { readFile, stat } from 'node:fs/promises';
 import path from 'node:path';
-import type { Loader } from '@ghii/ghii';
+import type { Loader } from '@ghii/ghii-v2';
 import yaml from 'js-yaml';
 
 export default function yamlLoader<T extends Record<string, unknown> = Record<string, unknown>>(

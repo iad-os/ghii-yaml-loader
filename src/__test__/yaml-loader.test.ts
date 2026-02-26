@@ -1,7 +1,7 @@
 import { existsSync, rmSync, copyFileSync } from 'node:fs';
 import path from 'node:path';
+import { describe, expect, it } from 'vitest';
 import yamlLoader from '../yaml-loader';
-import { describe, it, expect } from 'vitest';
 
 describe('Ghii Yaml Loader', () => {
   it('export a function', () => {

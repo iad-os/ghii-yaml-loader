@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
   build:
@@ -47,5 +50,3 @@ jobs:
 
       - name: publish to npm
         run: npm publish --access=public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

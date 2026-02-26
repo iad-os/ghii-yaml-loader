@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   publish:
-    name: publish
+    name: publish package
     runs-on: ubuntu-latest
 
     steps:
@@ -19,7 +19,7 @@ jobs:
       - name: 'Setup node'
         uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
           registry-url: https://registry.npmjs.org
 
       - name: install deps, tests and build
